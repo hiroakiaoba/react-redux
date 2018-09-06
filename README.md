@@ -66,9 +66,13 @@ import { increment, decrement } from '../actions'; // action(typeを持つ)をim
 ```
 const props = this.props // インスタンスのpropsには状態やアクションを渡していくため
 
+// stateで必要な情報を取り出して、Component内にpropsとしてマッピングする
+// どういったobjectをpropsとして対応させるのかを記述
 const mapStateToProps = state => ({ value: state.count.value });
+
+// あるアクションが発生した時に、reducerにtypeに応じた状態遷移を実行させるための関数 -> dispatch
 const mapDispatchToProps = dispatch => ({
-  increment: () => dispatch(increment()),
+  increment: () => dispatch(increment()), // importしたincrement関数をdispatchに渡す
   decrement: () => dispatch(decrement())
 })
 
